@@ -8,7 +8,7 @@ import { registration } from "@/types";
 export default async function handler(req: NextApiRequest, res: NextApiResponse) {
   try {
     const auth = new google.auth.GoogleAuth({
-      keyFile: 'assets/keys.json', // Replace with the path to your client credentials JSON file
+      keyFile: 'keys.json', // Replace with the path to your client credentials JSON file
       scopes: ['https://www.googleapis.com/auth/drive.readonly'],
     });
 
@@ -53,6 +53,6 @@ export default async function handler(req: NextApiRequest, res: NextApiResponse)
     // response.data.pipe(res);
   } catch (error) {
     console.error('Error fetching Google Drive CSV file:', error);
-    res.status(500).json({ error: 'Error fetching Google Drive CSV file' });
+    res.status(500).json({ error: 'Error fetching Google Drive CSV file: ' + error });
   }
 }
