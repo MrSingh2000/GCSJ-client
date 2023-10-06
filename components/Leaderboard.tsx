@@ -6,15 +6,15 @@ import { IoIosCloseCircle } from 'react-icons/io';
 type Props = {
   data: registration[],
   sortData: (type: string) => void,
+  leaderBoard: boolean
 }
 
-function Leaderboard({ data, sortData }: Props) {
+function Leaderboard({ data, sortData, leaderBoard }: Props) {
 
   const [modal, setModal] = useState(false);
 
   return (
     <div className='h-full min-h-screen w-full'>
-
       <div className="absolute right-0 mr-5 inline-block text-left z-10">
         <div>
           <button onClick={() => { setModal((prev) => !prev) }} type="button" className="border border-gray-300 bg-white dark:bg-gray-800 shadow-sm flex items-center justify-center w-full rounded-md  px-4 py-2 text-sm font-medium text-gray-700 dark:text-gray-50 hover:bg-gray-50 dark:hover:bg-gray-500 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-offset-gray-100 focus:ring-gray-500" id="options-menu">
@@ -27,6 +27,13 @@ function Leaderboard({ data, sortData }: Props) {
         </div>
         {modal && <div className="absolute right-0 w-56 mt-2 origin-top-right bg-white rounded-md shadow-lg dark:bg-gray-800 ring-1 ring-black ring-opacity-5">
           <div className="py-1 " role="menu" aria-orientation="vertical" aria-labelledby="options-menu">
+            <button onClick={() => { sortData("score"); setModal((prev) => !prev) }} className="w-full bg-green-200 text-left block px-4 py-2 text-md text-black hover:bg-green-100 hover:text-green-900 dark:text-green-100 dark:hover:text-white dark:hover:bg-green-600" role="menuitem">
+              <span className="flex flex-col">
+                <span>
+                  LeaderBoard
+                </span>
+              </span>
+            </button>
             <button onClick={() => { sortData("courses"); setModal((prev) => !prev) }} className="w-full text-left block px-4 py-2 text-md text-gray-700 hover:bg-gray-100 hover:text-gray-900 dark:text-gray-100 dark:hover:text-white dark:hover:bg-gray-600" role="menuitem">
               <span className="flex flex-col">
                 <span>
@@ -48,19 +55,26 @@ function Leaderboard({ data, sortData }: Props) {
                 </span>
               </span>
             </button>
-            <button className="w-full text-left block px-4 py-2 text-md text-gray-700 hover:bg-gray-100 hover:text-gray-900 dark:text-gray-100 dark:hover:text-white dark:hover:bg-gray-600" role="menuitem">
-              <span className="flex flex-col">
-                <span>
-                  LeaderBoard (coming soon)
-                </span>
-              </span>
-            </button>
           </div>
         </div>}
       </div>
 
 
       <div className="container px-4 mx-auto sm:px-8">
+        {leaderBoard && (<div className="bg-white w-fit relative -bottom-10 text-2xl font-semibold rounded-3xl">
+          <div
+            className="p-4 rounded-lg text-transparent bg-gradient-to-r from-red-500 via-yellow-500 to-red-200"
+            style={{
+              fontFamily: "'Fira Sans', sans-serif",
+              backgroundClip: 'text',
+              WebkitBackgroundClip: 'text',
+              textShadow: '0 2px 4px rgba(255, 255, 255, 0.5)',
+            }}
+          >
+            Leaderboard
+          </div>
+        </div>)}
+
         <div className="py-8">
           <div className="px-4 py-4 -mx-4 overflow-x-auto sm:-mx-8 sm:px-8">
             <div className="inline-block min-w-full overflow-hidden rounded-lg shadow">
@@ -83,7 +97,7 @@ function Leaderboard({ data, sortData }: Props) {
                       Total Completion of Both Paths
                     </th>
                     <th scope="col" className="px-5 py-3 text-sm font-bold text-center text-gray-800 uppercase bg-white border-b border-gray-200">
-                      Account Status
+                      {leaderBoard ? 'Score' : 'Account Status'}
                     </th>
                   </tr>
                 </thead>
@@ -125,9 +139,11 @@ function Leaderboard({ data, sortData }: Props) {
                           <span className={`relative inline-block px-3 py-1 font-semibold leading-tight ${item['Redemption Status'] === 'Yes' ? 'text-green-900' : 'text-white'}`}>
                             <span aria-hidden="true" className={`absolute inset-0 ${item['Redemption Status'] === 'Yes' ? 'bg-green-200' : 'bg-red-600'} rounded-full opacity-50`}>
                             </span>
-                            <span className="relative">
+                            {leaderBoard ? (<span className="relative">
+                              {item.score}
+                            </span>) : (<span className="relative">
                               {item['Redemption Status'] === 'Yes' ? 'active' : 'inactive'}
-                            </span>
+                            </span>)}
                           </span>
                         </td>
                       </tr>

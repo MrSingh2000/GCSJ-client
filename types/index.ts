@@ -9,5 +9,6 @@ export type registration = {
     "# of Skill Badges Completed": string,
     "# of GenAI Game Completed": string,
     "Total Completions of both Pathways": string,
-    "Redemption Status": string
+    "Redemption Status": string,
+    "score": string
 }
