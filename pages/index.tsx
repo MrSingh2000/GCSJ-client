@@ -16,7 +16,7 @@ type Props = {
 }
 
 export default function Home({ responseData }: Props) {
-  const [data, setData] = useState < registration[] > (responseData);
+  const [data, setData] = useState<registration[]>(responseData);
   const [LeaderBoard, setLeaderBoard] = useState(false);
 
   useEffect(() => {
@@ -56,13 +56,37 @@ export default function Home({ responseData }: Props) {
       </Head>
       <Navbar />
       {/* <Sidebar data={data} /> */}
-      <div>
-        <div className='text-xl bg-white w-fit p-2 rounded-2xl mt-2 ml-2'>
+      <div className='flex flex-col md:flex-row justify-center'>
+        <div className='md:text-xl text-sm bg-white w-fit p-2 rounded-2xl mt-2 ml-2'>
           <span className='font-semibold mr-2'>
             Accounts Active:
           </span>
           {data.reduce((count, user) => {
             if (user["Redemption Status"] === "Yes") {
+              return count + 1;
+            }
+            return count;
+          }, 0)}/{data.length}
+        </div>
+
+        <div className='md:text-xl text-sm bg-white w-fit p-2 rounded-2xl mt-2 ml-2'>
+          <span className='font-semibold mr-2'>
+            GenAI Completed:
+          </span>
+          {data.reduce((count, user) => {
+            if (user["# of GenAI Game Completed"] === '1') {
+              return count + 1;
+            }
+            return count;
+          }, 0)}/{data.length}
+        </div>
+
+        <div className='md:text-xl text-sm bg-white w-fit p-2 rounded-2xl mt-2 ml-2'>
+          <span className='font-semibold mr-2'>
+            GCSJ Completed:
+          </span>
+          {data.reduce((count, user) => {
+            if (user['Total Completions of both Pathways'] === 'Yes') {
               return count + 1;
             }
             return count;

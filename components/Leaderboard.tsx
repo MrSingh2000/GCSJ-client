@@ -82,6 +82,9 @@ function Leaderboard({ data, sortData, leaderBoard }: Props) {
                 <thead>
                   <tr>
                     <th scope="col" className="px-5 py-3 text-sm font-bold text-center text-gray-800 uppercase bg-white border-b border-gray-200">
+                      #
+                    </th>
+                    <th scope="col" className="px-5 py-3 text-sm font-bold text-center text-gray-800 uppercase bg-white border-b border-gray-200">
                       User
                     </th>
                     <th scope="col" className="px-5 py-3 text-sm font-bold text-center text-gray-800 uppercase bg-white border-b border-gray-200">
@@ -106,7 +109,16 @@ function Leaderboard({ data, sortData, leaderBoard }: Props) {
                   {data.map((item, index) => {
                     return (<>
                       <tr key={index}>
-                        <td className="px-5 py-5 text-sm text-center bg-white border-b border-gray-200">
+                      <td className={`px-5 py-5 text-sm text-center ${index < 80 ? 'bg-white' : 'bg-red-100 '} border-b border-gray-200`}>
+                          <div className="flex items-center">
+                            <div className="ml-3">
+                              <p className="text-gray-900 whitespace-no-wrap">
+                                {index + 1}
+                              </p>
+                            </div>
+                          </div>
+                        </td>
+                        <td className={`px-5 py-5 text-sm text-center ${index < 80 ? 'bg-white' : 'bg-red-100 '} border-b border-gray-200`}>
                           <div className="flex items-center">
                             <div className="ml-3">
                               <p className="text-gray-900 whitespace-no-wrap">
@@ -115,27 +127,27 @@ function Leaderboard({ data, sortData, leaderBoard }: Props) {
                             </div>
                           </div>
                         </td>
-                        <td className="px-5 py-5 text-sm text-center bg-white border-b border-gray-200">
+                        <td className={`px-5 py-5 text-sm text-center ${index < 80 ? 'bg-white' : 'bg-red-100 '} border-b border-gray-200`}>
                           <p className="text-gray-900 whitespace-no-wrap">
                             {item['# of Courses Completed']}
                           </p>
                         </td>
-                        <td className="px-5 py-5 text-sm text-center bg-white border-b border-gray-200">
+                        <td className={`px-5 py-5 text-sm text-center ${index < 80 ? 'bg-white' : 'bg-red-100 '} border-b border-gray-200`}>
                           <p className="text-gray-900 whitespace-no-wrap">
                             {item['# of Skill Badges Completed']}
                           </p>
                         </td>
-                        <td className="px-5 py-5 text-sm text-center bg-white border-b border-gray-200">
+                        <td className={`px-5 py-5 text-sm text-center ${index < 80 ? 'bg-white' : 'bg-red-100 '} border-b border-gray-200`}>
                           <p className="text-gray-900 whitespace-no-wrap">
                             {item['# of GenAI Game Completed']}
                           </p>
                         </td>
-                        <td className="px-5 py-5 text-sm text-center bg-white border-b border-gray-200">
+                        <td className={`px-5 py-5 text-sm text-center ${index < 80 ? 'bg-white' : 'bg-red-100 '} border-b border-gray-200`}>
                           <p className="text-gray-900 whitespace-no-wrap flex justify-center">
                             {item['Total Completions of both Pathways'] === 'Yes' ? <BsCheckCircleFill color={'#5cb85c'} size={30} /> : <IoIosCloseCircle color={'#d9534f'} size={30} />}
                           </p>
                         </td>
-                        <td className="px-5 py-5 text-sm bg-white border-b border-gray-200">
+                        <td className={`px-5 py-5 text-sm ${index < 80 ? 'bg-white' : 'bg-red-100 '} border-b border-gray-200`}>
                           <span className={`relative inline-block px-3 py-1 font-semibold leading-tight ${item['Redemption Status'] === 'Yes' ? 'text-green-900' : 'text-white'}`}>
                             <span aria-hidden="true" className={`absolute inset-0 ${item['Redemption Status'] === 'Yes' ? 'bg-green-200' : 'bg-red-600'} rounded-full opacity-50`}>
                             </span>
