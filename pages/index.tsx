@@ -3320,7 +3320,7 @@ export default function Home({ responseData }: Props) {
   //     "score": "0"
   //   }
   // ];
-  const [data, setData] = useState<registration[]>(d);
+  const [data, setData] = useState<registration[]>(responseData);
   const [LeaderBoard, setLeaderBoard] = useState(false);
 
   useEffect(() => {
