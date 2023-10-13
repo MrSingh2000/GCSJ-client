@@ -3363,7 +3363,7 @@ export default function Home({ responseData }: Props) {
 
       <Table data={data} leaderBoard={LeaderBoard} />
       <div className="w-full p-2 text-center justify-center fixed bottom-0 left-0 bg-gray-900 text-gray-300" >
-        Developed By <a href="https://github.com/mrsingh2000" referrerPolicy="no-referrer" className="text-blue-500" target='_blank'>Anshuman Singh 🎉</a>
+        Developed By <a href="https://www.linkedin.com/in/anshuman-singh-856991201" referrerPolicy="no-referrer" className="text-blue-500" target='_blank'>Anshuman Singh 🎉</a>
       </div>
     </div>
   )
