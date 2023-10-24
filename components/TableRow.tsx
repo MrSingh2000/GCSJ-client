@@ -8,13 +8,13 @@ type Props = {
 
 export default function TableRow({ participant, rank}: Props) {
     return (
-        <tr className={`border ${rank >= 80 ? 'bg-red-200' : 'odd:bg-white even:bg-gray-50'} border-b-slate-200`}>
+        <tr className={`border ${rank >= 87 ? 'bg-red-200' : 'odd:bg-white even:bg-gray-50'} border-b-slate-200`}>
             <td className="Rank p-3 text-center">
                 {rank + 1}
             </td>
 
             <td className="Student_Name p-3 w-80 uppercase">{participant["Student Name"]}
-                {(participant["Total Completions of both Pathways"] == "Yes") && rank < 80 &&  (participant['Redemption Status'] == "Yes") ? '🏅' : ''}
+                {(participant["Total Completions of both Pathways"] == "Yes") && rank < 87 &&  (participant['Redemption Status'] == "Yes") ? '🏅' : ''}
             </td>
 
             <td className="Redemption_Status p-3 relative">
