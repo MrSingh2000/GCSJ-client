@@ -6,6 +6,7 @@ import Navbar from '@/components/Navbar'
 import Head from 'next/head';
 import Table from '@/components/Table';
 import Speedometer from '@/components/Speedometer';
+import Script from 'next/script';
 
 const inter = Inter({ subsets: ['latin'] })
 
@@ -3355,17 +3356,51 @@ export default function Home({ responseData }: Props) {
   }
 
   return (
-    <div className={`${inter.className} h-full min-h-scree3 w-full`}>
-      <Head>
-        <title>GCSJ</title>
-      </Head>
-      <Navbar />
+    <>
+      <Script src="https://cdn.jsdelivr.net/npm/tsparticles-confetti@2.12.0/tsparticles.confetti.bundle.min.js" strategy="beforeInteractive"></Script>
+      <Script id="blast_effect">
+        {
+          `const end = Date.now() + 30 * 150;
 
-      <Table data={data} leaderBoard={LeaderBoard} />
-      <div className="w-full p-2 text-center justify-center fixed bottom-0 left-0 bg-gray-900 text-gray-300" >
-        Developed By <a href="https://www.linkedin.com/in/anshuman-singh-856991201" referrerPolicy="no-referrer" className="text-blue-500" target='_blank'>Anshuman Singh 🎉</a>
+          // Google colors
+          const colors = ["#4285F4", "#0F9D58", "#F4B400", "#DB4437"];
+          
+          (function frame() {
+            confetti({
+              particleCount: 2,
+              angle: 60,
+              spread: 55,
+              origin: { x: 0 },
+              colors: colors,
+            });
+          
+            confetti({
+              particleCount: 2,
+              angle: 120,
+              spread: 55,
+              origin: { x: 1 },
+              colors: colors,
+            });
+          
+            if (Date.now() < end) {
+              requestAnimationFrame(frame);
+            }
+          })();
+          `
+        }
+      </Script>
+      <div className={`${inter.className} h-full min-h-scree3 w-full`}>
+        <Head>
+          <title>GCSJ</title>
+        </Head>
+        <Navbar />
+
+        <Table data={data} leaderBoard={LeaderBoard} />
+        <div className="w-full p-2 text-center justify-center fixed bottom-0 left-0 bg-gray-900 text-gray-300" >
+          Developed By <a href="https://www.linkedin.com/in/anshuman-singh-856991201" referrerPolicy="no-referrer" className="text-blue-500" target='_blank'>Anshuman Singh 🎉</a>
+        </div>
       </div>
-    </div>
+    </>
   )
 }
 
