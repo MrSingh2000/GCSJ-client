@@ -7,6 +7,7 @@ import Head from 'next/head';
 import Table from '@/components/Table';
 import Speedometer from '@/components/Speedometer';
 import Script from 'next/script';
+import UnderMaintainance from '@/components/UnderMaintainance';
 
 const inter = Inter({ subsets: ['latin'] })
 
@@ -3355,7 +3356,7 @@ export default function Home({ responseData }: Props) {
     setData(sortedData);
   }
 
-  return (
+  return process.env.NEXT_PUBLIC_MAINTAINANCE === 'yes' ? <UnderMaintainance /> : (
     <>
       <Script src="https://cdn.jsdelivr.net/npm/tsparticles-confetti@2.12.0/tsparticles.confetti.bundle.min.js" strategy="beforeInteractive"></Script>
       <Script id="blast_effect">

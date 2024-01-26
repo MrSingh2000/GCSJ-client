@@ -20,3 +20,47 @@
 body {
   background: white;
 }
+
+.maintainance {
+  background-color: rgba(30, 40, 50, 0.8);
+  height: 100%;
+  padding-left: 10%;
+  position: relative;
+}
+
+.maintainance h1 {
+  margin: 0;
+  line-height: 1;
+  font-size: 5em;
+  letter-spacing: -1px;
+  padding-top: 30vh;
+}
+
+.maintainance p {
+  color: #DDD;
+}
+
+.maintainance hr {
+  height: 6px;
+  background-color: white;
+  width: 3em;
+  margin-left: 0;
+}
+
+.maintainance .powered {
+  position: absolute;
+  bottom: 1em;
+  color: #BBB;
+  font-size: 0.8em;
+  text-align: center;
+  width: 90%;
+}
+
+.maintainance a {
+  color: #CCC;
+  text-decoration: none;
+  transition: color 0.1s ease-in;
+}
+.maintainance a:hover {
+  color: white;
+}
