@@ -1,17 +1,20 @@
-import React from 'react'
+import React from 'react';
 
-type Props = {}
+type Props = {};
 
-function UnderMaintainance({ }: Props): React.FC<Props> {
-    return (
-        <>
-            <div className="maintainance font-mono">
-                <h1>We&apos;ll be back </h1>
-                <hr />
-                <p>Prizes ready! 🏆🎉 Stay tuned for more GDSC DCRUST fun. See you next time! 🚀</p>
-            </div>
-        </>
-    )
-}
+const UnderMaintainance: React.FC<Props> = ({}: Props) => {
+  return (
+    <>
+      <div className="maintainance font-mono">
+        <h1>We'll be back </h1>
+        <hr />
+        <p>
+          Prizes ready! 🏆🎉 Stay tuned for more GDSC DCRUST fun. See you next
+          time! 🚀
+        </p>
+      </div>
+    </>
+  );
+};
 
-export default UnderMaintainance
+export default UnderMaintainance;
