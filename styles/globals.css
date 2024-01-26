@@ -26,6 +26,7 @@ body {
   height: 100%;
   padding-left: 10%;
   position: relative;
+  height: 100vh;
 }
 
 .maintainance h1 {
